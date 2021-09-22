@@ -6,6 +6,7 @@ import com.nnte.basebusi.base.JedisComponent;
 import com.nnte.basebusi.base.WatchComponent;
 import com.nnte.basebusi.entity.AppRegistry;
 import com.nnte.basebusi.entity.MEnter;
+import com.nnte.framework.annotation.DBSchemaInterface;
 import com.nnte.framework.base.*;
 import com.nnte.framework.utils.BaiduMapUtil;
 import com.nnte.nnteService.component.NnteServiceComponent;
@@ -26,11 +27,11 @@ public class NnteServiceConfig extends BaseBusiComponent
     @Autowired
     private WatchComponent watchComponent;
     @Autowired
-    private DBSchemaPostgreSQL dbSchemaPostgreSQL;
-    @Autowired
     private WorkDBConfig workDBConfig;
     @Autowired
     private AppRootConfig appRootConfig;
+
+    private DBSchemaInterface dbSchemaInterface; //工作数据库的Schema接口
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -38,7 +39,6 @@ public class NnteServiceConfig extends BaseBusiComponent
                 NnteServiceApplication.App_Name,this);
         appInit();
     }
-
     private void appInit() throws Exception{
         //--------------------------------------------------------------------------------------
         BaseNnte.outConsoleLog("执行后续初始化功能......");
@@ -52,9 +52,11 @@ public class NnteServiceConfig extends BaseBusiComponent
         //-----------------------
         //--初始化文件服务器连接--
         //------------------------
+        DynamicDatabaseSourceHolder.loadDBSchemaInterface();
+        dbSchemaInterface = DynamicDatabaseSourceHolder.getSchemaInterface(workDBConfig.getDBDriverClassName());
         BaseBusiComponent.logInfo(this,"初始化工作数据库连接......");
         BaseBusiComponent.createDataBaseSource(NnteServiceComponent.class,
-                dbSchemaPostgreSQL,WorkDBConfig.DB_NAME,WorkDBConfig.MAPPER_PATH,
+                dbSchemaInterface,WorkDBConfig.DB_NAME,WorkDBConfig.MAPPER_PATH,
                 true,workDBConfig);
         //--------装载系统模块入口--------------
         BaseBusiComponent.loadSystemFuntionEnters();

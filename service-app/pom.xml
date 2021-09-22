@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>serviceParent</artifactId>
+        <groupId>nnte.service</groupId>
+        <version>1.0.1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>service-app</artifactId>
+    <version>1.0.1</version>
+    <packaging>war</packaging>
+    <name>service-app</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>nnte.service</groupId>
+            <artifactId>stock-data</artifactId>
+            <version>1.0.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.nnte</groupId>
+                    <artifactId>nnte_BaseBusi</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.nnte.kservice</groupId>
+                    <artifactId>AutoTask</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+</project>

@@ -3,18 +3,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.nnte.service</groupId>
-  <artifactId>NnteService</artifactId>
+  <groupId>nnte.service</groupId>
+  <artifactId>serviceParent</artifactId>
   <version>1.0.1</version>
-  <packaging>war</packaging>
-  <name>NnteService</name>
+  <packaging>pom</packaging>
+  <name>serviceParent</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
-
+<!--
   <repositories>
     <repository>
       <id>snapshots</id>
@@ -25,6 +25,12 @@
       </snapshots>
     </repository>
   </repositories>
+-->
+  <modules>
+    <module>service-app</module>
+    <module>stock-data</module>
+  </modules>
+
   <dependencies>
     <dependency>
       <groupId>com.nnte</groupId>

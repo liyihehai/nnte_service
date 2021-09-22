@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.nnte.mapper.workdb.securities.SecuritiesTradeAccountDao">
+    <resultMap id="SecuritiesTradeAccountResult" type="com.nnte.mapper.workdb.securities.SecuritiesTradeAccount">
+        <result column="id" property="id"/>
+        <result column="security_merchant" property="securityMerchant"/>
+        <result column="client_account" property="clientAccount"/>
+        <result column="total_asset" property="totalAsset"/>
+        <result column="buying_power" property="buyingPower"/>
+        <result column="security_asset" property="securityAsset"/>
+        <result column="fund_buy_amount" property="fundBuyAmount"/>
+        <result column="fund_buy_fee" property="fundBuyFee"/>
+        <result column="fund_sell_amount" property="fundSellAmount"/>
+        <result column="fund_sell_fee" property="fundSellFee"/>
+        <result column="withholding_amount" property="withholdingAmount"/>
+        <result column="account_type" property="accountType"/>
+        <result column="frozen_margin" property="frozenMargin"/>
+        <result column="frozen_exec_cash" property="frozenExecCash"/>
+        <result column="frozen_exec_fee" property="frozenExecFee"/>
+        <result column="pay_later" property="payLater"/>
+        <result column="preadva_pay" property="preadvaPay"/>
+        <result column="orig_banlance" property="origBanlance"/>
+        <result column="banlance" property="banlance"/>
+        <result column="deposit_withdraw" property="depositWithdraw"/>
+        <result column="trade_netting" property="tradeNetting"/>
+        <result column="captial_asset" property="captialAsset"/>
+        <result column="force_freeze_amount" property="forceFreezeAmount"/>
+        <result column="preferred_amount" property="preferredAmount"/>
+        <result column="repay_stock_aval_banlance" property="repayStockAvalBanlance"/>
+        <result column="unknown" property="unknown"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_date" property="updateDate"/>
+    </resultMap>
+    <insert id="addModel" keyProperty="id" useGeneratedKeys="true" parameterType="com.nnte.mapper.workdb.securities.SecuritiesTradeAccount">
+        insert into securities_trade_account (security_merchant ,client_account ,total_asset ,buying_power ,security_asset ,fund_buy_amount ,fund_buy_fee ,fund_sell_amount ,fund_sell_fee ,withholding_amount ,account_type ,frozen_margin ,frozen_exec_cash ,frozen_exec_fee ,pay_later ,preadva_pay ,orig_banlance ,banlance ,deposit_withdraw ,trade_netting ,captial_asset ,force_freeze_amount ,preferred_amount ,repay_stock_aval_banlance ,unknown ,create_time ,update_date )
+        values (#{securityMerchant} ,#{clientAccount} ,#{totalAsset} ,#{buyingPower} ,#{securityAsset} ,#{fundBuyAmount} ,#{fundBuyFee} ,#{fundSellAmount} ,#{fundSellFee} ,#{withholdingAmount} ,#{accountType} ,#{frozenMargin} ,#{frozenExecCash} ,#{frozenExecFee} ,#{payLater} ,#{preadvaPay} ,#{origBanlance} ,#{banlance} ,#{depositWithdraw} ,#{tradeNetting} ,#{captialAsset} ,#{forceFreezeAmount} ,#{preferredAmount} ,#{repayStockAvalBanlance} ,#{unknown} ,#{createTime} ,#{updateDate} )
+    </insert>
+    <select id="findModelByKey" resultMap="SecuritiesTradeAccountResult" parameterType="java.lang.Integer">
+        select * from securities_trade_account where id=#{id}
+    </select>
+    <delete id="deleteModel" parameterType="java.lang.Integer">
+        delete from securities_trade_account where id=#{id}
+    </delete>
+    <update id="updateModel" parameterType="com.nnte.mapper.workdb.securities.SecuritiesTradeAccount">
+        update securities_trade_account
+        <set>
+            <trim suffixOverrides=",">
+        <if test="securityMerchant!= null"><![CDATA[security_merchant=#{securityMerchant},]]></if>
+        <if test="clientAccount!= null"><![CDATA[client_account=#{clientAccount},]]></if>
+        <if test="totalAsset!= null"><![CDATA[total_asset=#{totalAsset},]]></if>
+        <if test="buyingPower!= null"><![CDATA[buying_power=#{buyingPower},]]></if>
+        <if test="securityAsset!= null"><![CDATA[security_asset=#{securityAsset},]]></if>
+        <if test="fundBuyAmount!= null"><![CDATA[fund_buy_amount=#{fundBuyAmount},]]></if>
+        <if test="fundBuyFee!= null"><![CDATA[fund_buy_fee=#{fundBuyFee},]]></if>
+        <if test="fundSellAmount!= null"><![CDATA[fund_sell_amount=#{fundSellAmount},]]></if>
+        <if test="fundSellFee!= null"><![CDATA[fund_sell_fee=#{fundSellFee},]]></if>
+        <if test="withholdingAmount!= null"><![CDATA[withholding_amount=#{withholdingAmount},]]></if>
+        <if test="accountType!= null"><![CDATA[account_type=#{accountType},]]></if>
+        <if test="frozenMargin!= null"><![CDATA[frozen_margin=#{frozenMargin},]]></if>
+        <if test="frozenExecCash!= null"><![CDATA[frozen_exec_cash=#{frozenExecCash},]]></if>
+        <if test="frozenExecFee!= null"><![CDATA[frozen_exec_fee=#{frozenExecFee},]]></if>
+        <if test="payLater!= null"><![CDATA[pay_later=#{payLater},]]></if>
+        <if test="preadvaPay!= null"><![CDATA[preadva_pay=#{preadvaPay},]]></if>
+        <if test="origBanlance!= null"><![CDATA[orig_banlance=#{origBanlance},]]></if>
+        <if test="banlance!= null"><![CDATA[banlance=#{banlance},]]></if>
+        <if test="depositWithdraw!= null"><![CDATA[deposit_withdraw=#{depositWithdraw},]]></if>
+        <if test="tradeNetting!= null"><![CDATA[trade_netting=#{tradeNetting},]]></if>
+        <if test="captialAsset!= null"><![CDATA[captial_asset=#{captialAsset},]]></if>
+        <if test="forceFreezeAmount!= null"><![CDATA[force_freeze_amount=#{forceFreezeAmount},]]></if>
+        <if test="preferredAmount!= null"><![CDATA[preferred_amount=#{preferredAmount},]]></if>
+        <if test="repayStockAvalBanlance!= null"><![CDATA[repay_stock_aval_banlance=#{repayStockAvalBanlance},]]></if>
+        <if test="unknown!= null"><![CDATA[unknown=#{unknown},]]></if>
+        <if test="createTime!= null"><![CDATA[create_time=#{createTime},]]></if>
+        <if test="updateDate!= null"><![CDATA[update_date=#{updateDate},]]></if>
+            </trim>
+        </set>
+        where id=#{id}
+    </update>
+    <sql id="findSecuritiesTradeAccountListSql">
+        select * from securities_trade_account t
+        <where>
+            <if test="id!= null"><![CDATA[and t.id = #{id}]]></if>
+            <if test="securityMerchant!= null"><![CDATA[and t.security_merchant = #{securityMerchant}]]></if>
+            <if test="clientAccount!= null"><![CDATA[and t.client_account = #{clientAccount}]]></if>
+            <if test="totalAsset!= null"><![CDATA[and t.total_asset = #{totalAsset}]]></if>
+            <if test="buyingPower!= null"><![CDATA[and t.buying_power = #{buyingPower}]]></if>
+            <if test="securityAsset!= null"><![CDATA[and t.security_asset = #{securityAsset}]]></if>
+            <if test="fundBuyAmount!= null"><![CDATA[and t.fund_buy_amount = #{fundBuyAmount}]]></if>
+            <if test="fundBuyFee!= null"><![CDATA[and t.fund_buy_fee = #{fundBuyFee}]]></if>
+            <if test="fundSellAmount!= null"><![CDATA[and t.fund_sell_amount = #{fundSellAmount}]]></if>
+            <if test="fundSellFee!= null"><![CDATA[and t.fund_sell_fee = #{fundSellFee}]]></if>
+            <if test="withholdingAmount!= null"><![CDATA[and t.withholding_amount = #{withholdingAmount}]]></if>
+            <if test="accountType!= null"><![CDATA[and t.account_type = #{accountType}]]></if>
+            <if test="frozenMargin!= null"><![CDATA[and t.frozen_margin = #{frozenMargin}]]></if>
+            <if test="frozenExecCash!= null"><![CDATA[and t.frozen_exec_cash = #{frozenExecCash}]]></if>
+            <if test="frozenExecFee!= null"><![CDATA[and t.frozen_exec_fee = #{frozenExecFee}]]></if>
+            <if test="payLater!= null"><![CDATA[and t.pay_later = #{payLater}]]></if>
+            <if test="preadvaPay!= null"><![CDATA[and t.preadva_pay = #{preadvaPay}]]></if>
+            <if test="origBanlance!= null"><![CDATA[and t.orig_banlance = #{origBanlance}]]></if>
+            <if test="banlance!= null"><![CDATA[and t.banlance = #{banlance}]]></if>
+            <if test="depositWithdraw!= null"><![CDATA[and t.deposit_withdraw = #{depositWithdraw}]]></if>
+            <if test="tradeNetting!= null"><![CDATA[and t.trade_netting = #{tradeNetting}]]></if>
+            <if test="captialAsset!= null"><![CDATA[and t.captial_asset = #{captialAsset}]]></if>
+            <if test="forceFreezeAmount!= null"><![CDATA[and t.force_freeze_amount = #{forceFreezeAmount}]]></if>
+            <if test="preferredAmount!= null"><![CDATA[and t.preferred_amount = #{preferredAmount}]]></if>
+            <if test="repayStockAvalBanlance!= null"><![CDATA[and t.repay_stock_aval_banlance = #{repayStockAvalBanlance}]]></if>
+            <if test="unknown!= null"><![CDATA[and t.unknown = #{unknown}]]></if>
+            <if test="createTime!= null"><![CDATA[and t.create_time = #{createTime}]]></if>
+            <if test="updateDate!= null"><![CDATA[and t.update_date = #{updateDate}]]></if>
+        </where>
+        <if test="sort!=null">order by t.${sort} ${dir}</if>
+    </sql>
+    <select id="findModelList" parameterType="com.nnte.mapper.workdb.securities.SecuritiesTradeAccount" resultMap="SecuritiesTradeAccountResult">
+        <include refid="findSecuritiesTradeAccountListSql"/>
+    </select>
+    <select id="findModelCount"  parameterType="com.nnte.mapper.workdb.securities.SecuritiesTradeAccount" resultType="java.lang.Integer">
+        SELECT count(1) PG_TOTALCOUNT FROM (
+        <include refid="findSecuritiesTradeAccountListSql" />
+        <if test="start!= null">  LIMIT #{limit} OFFSET #{start} </if>
+        ) m
+    </select>
+    <select id="findModelWithPg" parameterType="com.nnte.mapper.workdb.securities.SecuritiesTradeAccount" resultMap="SecuritiesTradeAccountResult">
+        <include refid="findSecuritiesTradeAccountListSql" />
+        <if test="start!= null">  LIMIT #{limit} OFFSET #{start} </if>
+    </select>
+    <select id="findModelListByIds" parameterType="java.util.List" resultMap="SecuritiesTradeAccountResult">
+        select * from securities_trade_account
+        where id in (
+        <foreach collection="list" item="item" separator="," >
+            (<trim suffixOverrides=",">
+                #{item},
+            </trim>)</foreach>)
+    </select>
+</mapper>
