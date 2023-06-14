@@ -1,22 +1,15 @@
 package com.nnte.nnteService.config;
 
-import com.nnte.framework.base.ConfigInterface;
+import com.nnte.basebusi.annotation.RootConfigProperties;
 import lombok.Data;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties(prefix = "nnte.service")
-@PropertySource(value = "classpath:nnte-service-config.properties")
+@RootConfigProperties(fileName = "nnte-service-config.properties",prefix = "nnte.service")
 @Data
-public class AppRootConfig implements ConfigInterface {
+public class AppRootConfig {
+    public final static String App_Code="NNTE-SERVICE";
+    public final static String App_Name="nnte服务应用";
     //本地工作环境
     private String debug;
-    private String localHostName;
-    private String localHostAbstractName;
-    private String staticRoot;
-    private String uploadStaticRoot;
-    //百度API-KEY
-    private String baiduApiKey;
 }

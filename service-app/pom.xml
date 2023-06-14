@@ -2,33 +2,30 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>serviceParent</artifactId>
-        <groupId>nnte.service</groupId>
-        <version>1.0.1</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.6</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 
+    <groupId>nnte.service</groupId>
     <artifactId>service-app</artifactId>
     <version>1.0.1</version>
-    <packaging>war</packaging>
     <name>service-app</name>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
-            <groupId>nnte.service</groupId>
-            <artifactId>stock-data</artifactId>
-            <version>1.0.1</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.nnte</groupId>
-                    <artifactId>nnte_BaseBusi</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.nnte.kservice</groupId>
-                    <artifactId>AutoTask</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>com.nnte.plateform</groupId>
+            <artifactId>pf_basic</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.nnte</groupId>
+            <artifactId>nnte_task_frame</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

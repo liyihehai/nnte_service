@@ -3,9 +3,7 @@ package com.nnte.nnteService.interceptor;
 import com.nnte.basebusi.base.BaseController;
 import com.nnte.basebusi.entity.OperatorInfo;
 import com.nnte.basebusi.excption.BusiException;
-import com.nnte.framework.annotation.ConfigLoad;
 import com.nnte.framework.base.BaseNnte;
-import com.nnte.framework.base.ConfigInterface;
 import com.nnte.framework.utils.StringUtils;
 import com.nnte.nnteService.component.NnteServiceComponent;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +17,14 @@ import java.util.Map;
 
 @Component
 public class NnteServiceNormalInterceptor implements HandlerInterceptor {
-    @ConfigLoad
-    private ConfigInterface appconfig;
+
     @Autowired
     private NnteServiceComponent nnteServiceComponent;
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //请求进入这个拦截器
         Map<String, Object> envData = (Map)request.getAttribute("envData");
-        BaseNnte.outConsoleLog(request.getServletPath());
+        nnteServiceComponent.outLogInfo(request.getServletPath());
         int enterType = 0; //页面进入
         if (envData!=null) {
             Map<String,Object> retMap=BaseNnte.newMapRetObj();
