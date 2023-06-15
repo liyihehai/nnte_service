@@ -18,11 +18,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.nnte.plateform</groupId>
-            <artifactId>pf_basic</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>com.nnte</groupId>
             <artifactId>nnte_task_frame</artifactId>
             <version>1.0.1-SNAPSHOT</version>
